@@ -9,7 +9,7 @@ import (
 	"github.com/bradenhilton/cityhash"
 )
 
-// GetMozillaInstallHash gets the Mozila install hash for the path in
+// GetMozillaInstallHash gets the Mozilla install hash for the path given in
 // installPath.
 //
 // installPath should be the path to the parent directory of the executable.
