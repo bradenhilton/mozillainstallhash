@@ -30,6 +30,7 @@ import (
 )
 
 const usage = `Gets the install hash used to determine different versions of Mozilla software
+
 Usage:
   get_mozilla_install_hash ["<path>"] ["<path>"] etc.
 
