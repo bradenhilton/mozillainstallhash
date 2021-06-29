@@ -9,7 +9,7 @@ import (
 	"github.com/bradenhilton/cityhash"
 )
 
-// GetMozillaInstallHash gets the Mozilla install hash for the path given in
+// MozillaInstallHash returns the Mozilla install hash for the path given in
 // installPath.
 //
 // installPath should be the path to the parent directory of the executable.
@@ -22,7 +22,7 @@ import (
 // intended operating system, with any trailing path separator removed.
 //
 // It returns a string of the hash in uppercase hexadecimal format.
-func GetMozillaInstallHash(installPath string) (string, error) {
+func MozillaInstallHash(installPath string) (string, error) {
 	endianness := unicode.LittleEndian
 	bomPolicy := unicode.IgnoreBOM
 	encoder := unicode.UTF16(endianness, bomPolicy).NewEncoder()

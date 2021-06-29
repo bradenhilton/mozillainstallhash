@@ -56,7 +56,7 @@ func TestGetMozillaInstallHash(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, err := GetMozillaInstallHash(tt.args.installPath); err != nil || got != tt.want {
+			if got, err := MozillaInstallHash(tt.args.installPath); err != nil || got != tt.want {
 				t.Errorf("MozillaInstallHash() = %v, %v, want %v, <nil>", got, err, tt.want)
 			}
 		})
