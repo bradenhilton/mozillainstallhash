@@ -22,12 +22,15 @@ import (
 // intended operating system, with any trailing path separator removed.
 //
 // It returns a string of the hash in uppercase hexadecimal format.
-func GetMozillaInstallHash(installPath string) string {
+func GetMozillaInstallHash(installPath string) (string, error) {
 	endianness := unicode.LittleEndian
 	bomPolicy := unicode.IgnoreBOM
 	encoder := unicode.UTF16(endianness, bomPolicy).NewEncoder()
 
-	pathBytes, _, _ := transform.Bytes(encoder, []byte(installPath))
+	pathBytes, _, err := transform.Bytes(encoder, []byte(installPath))
+	if err != nil {
+		return "", err
+	}
 	pathSize := uint32(len(pathBytes))
 
 	hash := cityhash.CityHash64(pathBytes, pathSize)
