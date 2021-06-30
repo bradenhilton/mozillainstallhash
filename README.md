@@ -51,7 +51,7 @@ func main() {
 		for _, path := range paths {
 			path = strings.TrimSuffix(path, "/")
 			path = strings.TrimSuffix(path, "\\")
-			hash := mozillainstallhash.GetMozillaInstallHash(path)
+			hash := mozillainstallhash.MozillaInstallHash(path)
 			fmt.Print(hash)
 		}
 	} else {

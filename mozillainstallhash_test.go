@@ -2,7 +2,7 @@ package mozillainstallhash
 
 import "testing"
 
-func TestGetMozillaInstallHash(t *testing.T) {
+func TestMozillaInstallHash(t *testing.T) {
 	type args struct {
 		installPath string
 	}
@@ -56,8 +56,8 @@ func TestGetMozillaInstallHash(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := GetMozillaInstallHash(tt.args.installPath); got != tt.want {
-				t.Errorf("GetMozillaInstallHash() = %v, want %v", got, tt.want)
+			if got, err := MozillaInstallHash(tt.args.installPath); err != nil || got != tt.want {
+				t.Errorf("MozillaInstallHash() = %v, %v, want %v, <nil>", got, err, tt.want)
 			}
 		})
 	}
