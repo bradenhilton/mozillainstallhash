@@ -1,5 +1,5 @@
-github.com/bradenhilton/cityhash v0.0.0-20210627073353-0083b3769cc5 h1:ERKC2nOiukFtLmNTyuIAjBX97N1gJ9gQPBqMlM0TPww=
-github.com/bradenhilton/cityhash v0.0.0-20210627073353-0083b3769cc5/go.mod h1:Wmb8yW1egA9ulrsRX4mxfYx5zq4nBWOCZ+j63oK6uz8=
+github.com/bradenhilton/cityhash v1.0.0 h1:1QauDCwfxwIGwO2jBTJdEBqXgfCusAgQOSgdl4RsTMI=
+github.com/bradenhilton/cityhash v1.0.0/go.mod h1:Wmb8yW1egA9ulrsRX4mxfYx5zq4nBWOCZ+j63oK6uz8=
 golang.org/x/text v0.3.6 h1:aRYxNxv6iGQlyVaZmk6ZgYEDa+Jg18DxebPSrd6bg1M=
 golang.org/x/text v0.3.6/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
