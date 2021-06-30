@@ -2,7 +2,7 @@ package mozillainstallhash
 
 import "testing"
 
-func TestGetMozillaInstallHash(t *testing.T) {
+func TestMozillaInstallHash(t *testing.T) {
 	type args struct {
 		installPath string
 	}
