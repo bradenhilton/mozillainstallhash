@@ -1,75 +1,74 @@
 # mozillainstallhash
 
-Gets the Mozilla install hash used to differentiate between installs in `installs.ini` and `profiles.ini`.
+Gets the hash used to differentiate between installs of Mozilla software in `installs.ini` and `profiles.ini`.
 
 ### Example
-First run:
 
-```
-go get github.com/bradenhilton/mozillainstallhash
-```
+1. Create a new local Go module:
+   1. Create a new directory e.g. `$GOPATH/src/get_mozilla_install_hash`
+   2. Change into the newly created directory
+   3. Run `go mod init get_mozilla_install_hash`
+2. Create a new file `get_mozilla_install_hash.go`:
 
-(and possibly)
+	```go
+	package main
 
-```
-go get github.com/bradenhilton/cityhash
-```
+	import (
+		"fmt"
+		"log"
+		"os"
+		"strings"
 
-Create a new file e.g. `get_mozilla_install_hash.go`:
+		"github.com/bradenhilton/mozillainstallhash"
+	)
 
-```go
-package main
+	const usage = `
+	get_mozilla_install_hash
+		Get the hash used to differentiate between installs of Mozilla software.
 
-import (
-	"fmt"
-	"log"
-	"os"
-	"strings"
+	Usage:
+		get_mozilla_install_hash <path> [<path> ...]
 
-	"github.com/bradenhilton/mozillainstallhash"
-)
+	Where <path> is a string describing the parent directory of the executable,
+	e.g. "C:\Program Files\Mozilla Firefox", with platform specific path separators
+	("\" on Windows and "/" on Unix-like systems)
 
-const usage = `Gets the install hash used to determine different versions of Mozilla software
+	Example:
+		get_mozilla_install_hash "C:\Program Files\Mozilla Firefox"
+		308046B0AF4A39CB
 
-Usage:
-  get_mozilla_install_hash ["<path>"] ["<path>"] etc.
+		get_mozilla_install_hash "C:/Program Files/Mozilla Firefox"
+		9D561FCD08DC6D55
 
-Where <path> is a string describing the parent directory of
-the executable, e.g. "C:\Program Files\Mozilla Firefox", with
-platform specific path separators ("\" on Windows and "/" on Unix-like systems)
+		get_mozilla_install_hash "/usr/lib/firefox"
+		4F96D1932A9F858E`
 
-Example:
-  get_mozilla_install_hash "C:\Program Files\Mozilla Firefox"
-  308046B0AF4A39CB
+	func main() {
+		if len(os.Args) == 1 {
+			log.Println(fmt.Errorf("error: no path specified"))
+			fmt.Println(usage)
+			os.Exit(1)
+		}
 
-  get_mozilla_install_hash "C:/Program Files/Mozilla Firefox"
-  9D561FCD08DC6D55`
-
-func main() {
-	if len(os.Args) > 1 {
 		paths := os.Args[1:]
 		for _, path := range paths {
 			path = strings.TrimSuffix(path, "/")
 			path = strings.TrimSuffix(path, "\\")
-			hash := mozillainstallhash.MozillaInstallHash(path)
-			fmt.Print(hash)
+
+			hash, err := mozillainstallhash.MozillaInstallHash(path)
+			if err != nil {
+				log.Println(err)
+				continue
+			}
+
+			fmt.Println(hash)
 		}
-	} else {
-		log.Println(fmt.Errorf("error: no path specified"))
-		fmt.Println(usage)
 	}
-}
-```
+	```
 
-Run it:
+3. Run `go get github.com/bradenhilton/mozillainstallhash`
+4. Run `go run get_mozilla_install_hash.go <your_path_here>`
 
-```
-go run get_mozilla_install_hash.go "C:\Program Files\Mozilla Firefox" "/usr/lib/firefox"
-```
+### License
 
-Output:
-
-```
-308046B0AF4A39CB
-4F96D1932A9F858E
-```
+MIT
