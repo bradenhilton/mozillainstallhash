@@ -53,6 +53,13 @@ func TestMozillaInstallHash(t *testing.T) {
 			},
 			want: "6BA5C87ECB35E12F",
 		},
+		{
+			name: "Alternative Linux Firefox Release Path",
+			args: args{
+				installPath: "/opt/firefox",
+			},
+			want: "6AFDA46A1A8AD48",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -35,5 +35,5 @@ func MozillaInstallHash(installPath string) (string, error) {
 
 	hash := cityhash.CityHash64(pathBytes, pathSize)
 
-	return fmt.Sprintf("%016X", hash), nil
+	return fmt.Sprintf("%X", hash), nil
 }
