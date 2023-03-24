@@ -4,5 +4,5 @@ go 1.15
 
 require (
 	github.com/bradenhilton/cityhash v1.0.0
-	golang.org/x/text v0.3.6
+	golang.org/x/text v0.8.0
 )
